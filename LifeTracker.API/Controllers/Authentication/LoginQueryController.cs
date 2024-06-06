@@ -11,10 +11,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LifeTracker.API.Controllers.Authentication;
 
-public class LoginController(IConfiguration config) : BaseController
+public class LoginQueryController(IConfiguration config) : AuthController
 {
     [AllowAnonymous]
-    [HttpPost]
+    [HttpGet]
     public IActionResult Login([FromQuery] LoginRequestModel loginRequestModel)
     {
         IActionResult response = Unauthorized();
@@ -34,9 +34,9 @@ public class LoginController(IConfiguration config) : BaseController
     {
         UserDtoModel? user = null;
 
-        if (loginRequestModel.Username.ToLower() == "admin")
+        if (loginRequestModel.Username == "test" || loginRequestModel.Email == "test")
         {
-            user = new UserDtoModel { Username = loginRequestModel.Username, Email = loginRequestModel.Email, DateOfJoin = loginRequestModel.DateOfJoing };
+            user = new UserDtoModel(loginRequestModel);
         }
 
         return user;
@@ -44,14 +44,13 @@ public class LoginController(IConfiguration config) : BaseController
     
     private string GenerateJwtWebToken(UserDtoModel userInfo)
     {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, userInfo.Username),
             new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
-            new Claim("DateOfJoin", userInfo.DateOfJoin.ToString("yyyy-MM-dd")),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
         

@@ -1,5 +1,10 @@
 using System.Text;
+using LifeTracker.Application.Config;
+using LifeTracker.Infrastructure.Config;
+using LifeTracker.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -9,7 +14,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
 
@@ -59,6 +64,10 @@ public static class Program
                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
                    };
                });
+        
+        builder.ConfigureApplicationServices()
+               .ConfigureContexts()
+               .ConfigureQueryManagers();
 
         var app = builder.Build();
 
