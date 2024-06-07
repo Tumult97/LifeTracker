@@ -1,5 +1,6 @@
 using System.Text;
 using LifeTracker.Application.Config;
+using LifeTracker.Application.Config.ServiceConfigs;
 using LifeTracker.Infrastructure.Config;
 using LifeTracker.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -64,10 +65,11 @@ public static class Program
                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
                    };
                });
-        
+
         builder.ConfigureApplicationServices()
                .ConfigureContexts()
-               .ConfigureQueryManagers();
+               .ConfigureQueryManagers()
+               .ConfigureCommandManagers();
 
         var app = builder.Build();
 

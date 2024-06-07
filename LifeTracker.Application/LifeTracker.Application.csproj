@@ -8,10 +8,16 @@
 
     <ItemGroup>
       <PackageReference Include="FastEndpoints" Version="5.26.0" />
+      <PackageReference Include="tumult.Util.dotnet_helpers" Version="1.0.6.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\Entities\UserService\" />
+      <Folder Include="Services\Entities\Common\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LifeTracker.Domain\LifeTracker.Domain.csproj" />
+      <ProjectReference Include="..\LifeTracker.Infrastructure\LifeTracker.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

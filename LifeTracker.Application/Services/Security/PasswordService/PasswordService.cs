@@ -25,4 +25,11 @@ public class PasswordService : IPasswordService
         var salt = Convert.ToBase64String(byteSalt);
         return salt;
     }
+
+    public bool VerifyPassword(string password, string passwordHash, string passwordSalt)
+    {
+        var requestPasswordHash = ComputeHash(password, passwordSalt, "", 3);
+        
+        return requestPasswordHash == passwordHash;
+    }
 }

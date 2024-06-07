@@ -1,3 +1,5 @@
+using LifeTracker.Application.Services.Entities.UserService;
+using LifeTracker.Application.Services.Entities.UserService.Interfaces;
 using LifeTracker.Application.Services.Security.PasswordService;
 using LifeTracker.Application.Services.Security.TokenService;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +11,7 @@ public static class ApplicationSecurityServicesConfigurator
 {
     public static void BindSecurityServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddScoped<IPasswordService, PasswordService>();
-        builder.Services.AddScoped<ITokenService, TokenService>();
+        builder.Services.AddTransient<IPasswordService, PasswordService>();
+        builder.Services.AddTransient<ITokenService, TokenService>();
     }
 }

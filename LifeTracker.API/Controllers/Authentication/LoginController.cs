@@ -4,14 +4,14 @@ using System.Text;
 using LifeTracker.API.Controllers.Base;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
-using LifeTracker.Domain.Models.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LifeTracker.API.Controllers.Authentication;
 
-public class LoginQueryController(IConfiguration config) : AuthController
+[Route("api/Authentication")]
+public class LoginController(IConfiguration config) : BaseController
 {
     [AllowAnonymous]
     [HttpGet]

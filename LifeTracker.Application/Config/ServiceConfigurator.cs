@@ -9,6 +9,8 @@ public static class ServiceConfigurator
     public static WebApplicationBuilder ConfigureApplicationServices(this WebApplicationBuilder builder)
     {
         builder.BindSecurityServices();
+        builder.BindQueryServices();
+        builder.BindCommandServices();
         
         return builder;
     }
