@@ -1,20 +1,23 @@
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace LifeTracker.Application.Services.Security.PasswordService;
 
-public class PasswordService : IPasswordService
+public class PasswordService(IConfiguration configuration) : IPasswordService
 {
-    public string ComputeHash(string password, string salt, string pepper, int iteration)
+    private readonly string _pepper = configuration["PasswordPepper"]!;
+    
+    public string ComputeHash(string password, string salt, int iteration)
     {
         if (iteration <= 0) return password;
         
         using var sha256 = SHA256.Create();
-        var passwordSaltPepper = $"{password}{salt}{pepper}";
+        var passwordSaltPepper = $"{password}{salt}{_pepper}";
         var byteValue = Encoding.UTF8.GetBytes(passwordSaltPepper);
         var byteHash = sha256.ComputeHash(byteValue);
         var hash = Convert.ToBase64String(byteHash);
-        return ComputeHash(hash, salt, pepper, iteration - 1);
+        return ComputeHash(hash, salt, iteration - 1);
     }
 
     public string GenerateSalt()
@@ -28,7 +31,7 @@ public class PasswordService : IPasswordService
 
     public bool VerifyPassword(string password, string passwordHash, string passwordSalt)
     {
-        var requestPasswordHash = ComputeHash(password, passwordSalt, "", 3);
+        var requestPasswordHash = ComputeHash(password, passwordSalt, 3);
         
         return requestPasswordHash == passwordHash;
     }

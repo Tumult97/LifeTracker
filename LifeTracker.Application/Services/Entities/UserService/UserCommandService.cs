@@ -8,14 +8,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace LifeTracker.Application.Services.Entities.UserService;
 
-public class UserCommandService(IPasswordService passwordService, IConfiguration configuration, IUserCommandManager userCommandManager) : IUserCommandService
+public class UserCommandService(IPasswordService passwordService, IUserCommandManager userCommandManager) : IUserCommandService
 {
-    private readonly string _pepper = configuration["PasswordPepper"]!;
     
     public async Task<UserDtoModel> RegisterUserAsync(RegisterRequestModel registerRequestModel)
     {
         string passwordSalt = passwordService.GenerateSalt();
-        string passwordHash = passwordService.ComputeHash(registerRequestModel.Password, passwordSalt, _pepper, 3);
+        string passwordHash = passwordService.ComputeHash(registerRequestModel.Password, passwordSalt, 3);
 
         var user = new UserEntity(
             firstName: registerRequestModel.FirstName,
