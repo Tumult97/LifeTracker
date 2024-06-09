@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="QueryManagers\Groups\" />
+      <Folder Include="DataManagers\Common\" />
     </ItemGroup>
 
 </Project>

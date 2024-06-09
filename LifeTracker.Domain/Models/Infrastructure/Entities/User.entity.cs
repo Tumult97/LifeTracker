@@ -11,4 +11,5 @@ public class UserEntity(string firstName, string lastName, string email, string 
     public string PasswordSalt { get; set; } = passwordSalt;
     
     public List<GroupEntity>? Groups { get; set; }
+    public List<ExpenseEntity>? Expenses { get; set; }
 }

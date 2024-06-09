@@ -21,11 +21,5 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<UserEntity>
         builder.HasMany(x => x.Groups)
                .WithMany(x => x.Users)
                .UsingEntity<UserGroupEntity>();
-        
-        // builder.HasMany(x => x.Groups)
-        //        .WithMany(x => x.Users)
-        //        .UsingEntity<UserGroupEntity>(
-        //            l => l.HasOne<UserEntity>().WithMany().HasForeignKey(e => e.UserId),
-        //            r => r.HasOne<GroupEntity>().WithMany().HasForeignKey(e => e.GroupId));
     }
 }

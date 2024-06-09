@@ -7,11 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Models\Application\" />
-      <Folder Include="Models\Domain\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="FastEndpoints" Version="5.26.0" />
       <PackageReference Include="tumult.Util.dotnet_helpers" Version="1.0.6.1" />
     </ItemGroup>

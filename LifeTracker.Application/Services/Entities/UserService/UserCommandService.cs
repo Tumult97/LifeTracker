@@ -3,7 +3,7 @@ using LifeTracker.Application.Services.Security.PasswordService;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
 using LifeTracker.Domain.Models.Infrastructure.Entities;
-using LifeTracker.Infrastructure.Command_Managers.User;
+using LifeTracker.Infrastructure.DataManagers.Users;
 using Microsoft.Extensions.Configuration;
 
 namespace LifeTracker.Application.Services.Entities.UserService;

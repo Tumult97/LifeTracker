@@ -1,23 +1,23 @@
 using LifeTracker.Domain.Models.Infrastructure.Entities;
 using LifeTracker.Infrastructure.Context;
 
-namespace LifeTracker.Infrastructure.Command_Managers.Groups;
+namespace LifeTracker.Infrastructure.DataManagers.Groups;
 
 public class GroupCommandManager(DatabaseContext context) : IGroupCommandManager
 {
     public void Create(GroupEntity group)
     {
-        context.groups.Add(group);
+        context.Groups.Add(group);
     }
 
     public void Update(GroupEntity group)
     {
-        context.groups.Update(group);
+        context.Groups.Update(group);
     }
 
     public void AddUserMappings(List<UserGroupEntity> userGroups)
     {
-        context.userGroups.AddRange(userGroups);
+        context.UserGroups.AddRange(userGroups);
     }
 
     public void SaveChanges()

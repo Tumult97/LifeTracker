@@ -4,8 +4,7 @@ using LifeTracker.Application.Services.Security.PasswordService;
 using LifeTracker.Application.Services.Security.TokenService;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
-using LifeTracker.Infrastructure.Command_Managers.User;
-using LifeTracker.Infrastructure.QueryManagers.Users;
+using LifeTracker.Infrastructure.DataManagers.Users;
 
 namespace LifeTracker.Application.Services.Entities.UserService;
 

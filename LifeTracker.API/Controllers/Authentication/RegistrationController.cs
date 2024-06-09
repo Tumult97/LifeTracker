@@ -1,7 +1,6 @@
 using LifeTracker.API.Controllers.Base;
 using LifeTracker.Application.Services.Entities.UserService.Interfaces;
 using LifeTracker.Domain.Models.API;
-using LifeTracker.Infrastructure.Command_Managers.User;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 

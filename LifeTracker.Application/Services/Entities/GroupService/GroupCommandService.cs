@@ -2,8 +2,8 @@ using dotnet_helpers.Models;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
 using LifeTracker.Domain.Models.Infrastructure.Entities;
-using LifeTracker.Infrastructure.Command_Managers.Groups;
-using LifeTracker.Infrastructure.QueryManagers.Users;
+using LifeTracker.Infrastructure.DataManagers.Groups;
+using LifeTracker.Infrastructure.DataManagers.Users;
 
 namespace LifeTracker.Application.Services.Entities.GroupService;
 

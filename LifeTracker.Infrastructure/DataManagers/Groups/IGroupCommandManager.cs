@@ -1,6 +1,6 @@
 using LifeTracker.Domain.Models.Infrastructure.Entities;
 
-namespace LifeTracker.Infrastructure.Command_Managers.Groups;
+namespace LifeTracker.Infrastructure.DataManagers.Groups;
 
 public interface IGroupCommandManager
 {
