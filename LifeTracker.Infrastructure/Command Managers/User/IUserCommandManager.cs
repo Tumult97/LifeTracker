@@ -4,7 +4,7 @@ namespace LifeTracker.Infrastructure.Command_Managers.User;
 
 public interface IUserCommandManager
 {
-    void CreateAsync(UserEntity user);
+    void Create(UserEntity user);
     
     void SaveChanges();
 }

@@ -5,7 +5,7 @@ namespace LifeTracker.Infrastructure.Command_Managers.User;
 
 public class UserCommandManager(DatabaseContext context) : IUserCommandManager
 {
-    public void CreateAsync(UserEntity user)
+    public void Create(UserEntity user)
     {
         context.users.Add(user);
     }   

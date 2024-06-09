@@ -5,5 +5,5 @@ namespace LifeTracker.Application.Services.Entities.UserService.Interfaces;
 
 public interface IUserCommandService
 {
-    Task<UserDtoModel> RegisterUserAsync(RegisterRequestModel registerRequestModel);
+    Task<UserDto> RegisterUserAsync(RegisterRequestModel registerRequestModel);
 }

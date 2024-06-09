@@ -11,7 +11,7 @@ namespace LifeTracker.Application.Services.Entities.UserService;
 public class UserCommandService(IPasswordService passwordService, IUserCommandManager userCommandManager) : IUserCommandService
 {
     
-    public async Task<UserDtoModel> RegisterUserAsync(RegisterRequestModel registerRequestModel)
+    public async Task<UserDto> RegisterUserAsync(RegisterRequestModel registerRequestModel)
     {
         string passwordSalt = passwordService.GenerateSalt();
         string passwordHash = passwordService.ComputeHash(registerRequestModel.Password, passwordSalt, 3);
@@ -24,9 +24,9 @@ public class UserCommandService(IPasswordService passwordService, IUserCommandMa
             passwordHash: passwordHash,
             passwordSalt: passwordSalt);
         
-        userCommandManager.CreateAsync(user);
+        userCommandManager.Create(user);
         userCommandManager.SaveChanges();
 
-        return new UserDtoModel(user);
+        return new UserDto(user);
     }
 }

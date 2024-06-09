@@ -21,4 +21,8 @@
       <ProjectReference Include="..\LifeTracker.Domain\LifeTracker.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="QueryManagers\Groups\" />
+    </ItemGroup>
+
 </Project>

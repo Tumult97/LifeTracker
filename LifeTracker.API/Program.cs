@@ -1,13 +1,10 @@
 using System.Text;
 using LifeTracker.Application.Config;
-using LifeTracker.Application.Config.ServiceConfigs;
 using LifeTracker.Infrastructure.Config;
-using LifeTracker.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace LifeTracker.API;
 
@@ -48,6 +45,8 @@ public static class Program
                     new string[] {}
                 }
             });
+            
+            swaggerGenOptions.EnableAnnotations();
         });
 
         builder.Services

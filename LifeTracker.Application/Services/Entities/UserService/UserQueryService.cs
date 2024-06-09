@@ -5,6 +5,7 @@ using LifeTracker.Application.Services.Security.TokenService;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
 using LifeTracker.Infrastructure.Command_Managers.User;
+using LifeTracker.Infrastructure.QueryManagers.Users;
 
 namespace LifeTracker.Application.Services.Entities.UserService;
 
@@ -12,7 +13,7 @@ public class UserQueryService(IPasswordService passwordService, IUserQueryManage
 {
     public async Task<ServiceResult<string?>> Login(LoginRequestModel loginRequestModel)
     {
-        var user = await userQueryManager.GetByEmailAddressAsync(loginRequestModel.Email);
+        var user = await userQueryManager.GetUserSingleAsync(predicate: user => user.Email.ToLower() == loginRequestModel.EmailOrUsername.ToLower() || user.Username == loginRequestModel.EmailOrUsername);
 
         if (user == null)
         {

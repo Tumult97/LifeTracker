@@ -1,4 +1,3 @@
-using LifeTracker.Application.Services.Entities.UserService;
 using LifeTracker.Infrastructure.QueryManagers.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
