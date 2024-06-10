@@ -12,23 +12,20 @@ namespace LifeTracker.Application.Services.Entities.GroupService;
 
 public class GroupQueryService : IGroupQueryService
 {
-    private readonly IGroupQueryManager _groupQueryManager;
     private readonly IUserQueryManager _userQueryManager;
     private readonly string? _loggedInUserId;
 
     public GroupQueryService(
-        IGroupQueryManager groupQueryManager, 
         IHttpContextAccessor httpContextAccessor,
         IUserQueryManager userQueryManager)
     {
-        _groupQueryManager = groupQueryManager;
         _userQueryManager = userQueryManager;
         _loggedInUserId = httpContextAccessor.HttpContext?.User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value ?? null;
     }
 
-    public async Task<ServiceResult<IReadOnlyList<GroupDto>>> GetGroupsForCurrentUser()
+    public ServiceResult<IReadOnlyList<GroupDto>> GetGroupsForCurrentUser()
     {
-        var user = await _userQueryManager.GetUserSingleAsync(includeGroups: true, predicate: user => user.Email == _loggedInUserId);
+        var user = _userQueryManager.GetUserSingle(includeGroups: true, predicate: user => user.Email == _loggedInUserId);
 
         if (user == null)
         {

@@ -6,5 +6,5 @@ namespace LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 
 public interface IGroupCommandService
 {
-    Task<ServiceResult<GroupDto>> CreateGroup(GroupCreationRequest groupCreationRequest);
+    ServiceResult<GroupDto> CreateGroup(GroupCreationRequest groupCreationRequest);
 }

@@ -10,7 +10,7 @@ namespace LifeTracker.Application.Services.Entities.GroupService;
 
 public class GroupCommandService(IGroupCommandManager groupCommandManager, IUserQueryManager userQueryManager) : IGroupCommandService
 {
-    public async Task<ServiceResult<GroupDto>> CreateGroup(GroupCreationRequest groupCreationRequest)
+    public ServiceResult<GroupDto> CreateGroup(GroupCreationRequest groupCreationRequest)
     {
         var group = new GroupEntity(groupCreationRequest);
         
@@ -18,7 +18,7 @@ public class GroupCommandService(IGroupCommandManager groupCommandManager, IUser
         
         if (groupCreationRequest.UserIds != null)
         {
-            IReadOnlyList<UserEntity> users = await userQueryManager.GetUserListAsync(
+            IReadOnlyList<UserEntity> users = userQueryManager.GetUserList(
                 includeTracking: true, 
                 predicate: user => groupCreationRequest.UserIds.Contains(user.Id));
 

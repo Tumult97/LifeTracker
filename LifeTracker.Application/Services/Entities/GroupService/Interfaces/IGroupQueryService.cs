@@ -6,5 +6,5 @@ namespace LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 
 public interface IGroupQueryService
 {
-    Task<ServiceResult<IReadOnlyList<GroupDto>>> GetGroupsForCurrentUser();
+    ServiceResult<IReadOnlyList<GroupDto>> GetGroupsForCurrentUser();
 }

@@ -10,9 +10,9 @@ namespace LifeTracker.Application.Services.Entities.UserService;
 
 public class UserQueryService(IPasswordService passwordService, IUserQueryManager userQueryManager, ITokenService tokenService) : IUserQueryService
 {
-    public async Task<ServiceResult<string?>> Login(LoginRequestModel loginRequestModel)
+    public ServiceResult<string?> Login(LoginRequestModel loginRequestModel)
     {
-        var user = await userQueryManager.GetUserSingleAsync(predicate: user => user.Email.ToLower() == loginRequestModel.EmailOrUsername.ToLower() || user.Username == loginRequestModel.EmailOrUsername);
+        var user = userQueryManager.GetUserSingle(predicate: user => user.Email.ToLower() == loginRequestModel.EmailOrUsername.ToLower() || user.Username == loginRequestModel.EmailOrUsername);
 
         if (user == null)
         {

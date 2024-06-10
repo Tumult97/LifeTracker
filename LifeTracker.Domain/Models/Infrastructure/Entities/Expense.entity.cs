@@ -2,9 +2,8 @@ using LifeTracker.Domain.Enums;
 
 namespace LifeTracker.Domain.Models.Infrastructure.Entities;
 
-public class ExpenseEntity
+public class ExpenseEntity : AuditModelBase
 {
-    public int Id { get; set; }
     public string Name { get; set; } = null!;
     public decimal Amount { get; set; }
     public DateTime Date { get; set; }

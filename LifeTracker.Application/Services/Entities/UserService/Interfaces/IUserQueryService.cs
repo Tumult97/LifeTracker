@@ -6,5 +6,5 @@ namespace LifeTracker.Application.Services.Entities.UserService.Interfaces;
 
 public interface IUserQueryService
 {
-    Task<ServiceResult<string?>> Login(LoginRequestModel loginRequestModel);
+    ServiceResult<string?> Login(LoginRequestModel loginRequestModel);
 }

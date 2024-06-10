@@ -7,7 +7,7 @@ namespace LifeTracker.Infrastructure.DataManagers.Groups;
 
 public class GroupQueryManager(DatabaseContext context) : IGroupQueryManager
 {
-    public async Task<List<GroupEntity>> GetGroupListAsync(Expression<Func<GroupEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUsers = false)
+    public List<GroupEntity> GetGroupList(Expression<Func<GroupEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUsers = false)
     {
         var groupContext = (includeTracking ? context.Groups : context.Groups.AsNoTracking()).IgnoreAutoIncludes();
         
@@ -15,13 +15,13 @@ public class GroupQueryManager(DatabaseContext context) : IGroupQueryManager
         
         if (predicate != null)
         {
-            return await groupContext.Where(predicate).ToListAsync();
+            return groupContext.Where(predicate).ToList();
         }
         
-        return await groupContext.ToListAsync();
+        return groupContext.ToList();
     }
 
-    public async Task<GroupEntity?> GetGroupSingleAsync(Expression<Func<GroupEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUsers = false)
+    public GroupEntity? GetGroupSingle(Expression<Func<GroupEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUsers = false)
     {
         var groupContext = (includeTracking ? context.Groups : context.Groups.AsNoTracking()).IgnoreAutoIncludes();
         
@@ -29,9 +29,9 @@ public class GroupQueryManager(DatabaseContext context) : IGroupQueryManager
         
         if (predicate != null)
         {
-            return await groupContext.FirstOrDefaultAsync(predicate);
+            return groupContext.FirstOrDefault(predicate);
         }
         
-        return await groupContext.FirstOrDefaultAsync();
+        return groupContext.FirstOrDefault();
     }
 }

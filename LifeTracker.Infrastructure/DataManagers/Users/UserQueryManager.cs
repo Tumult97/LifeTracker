@@ -7,7 +7,7 @@ namespace LifeTracker.Infrastructure.DataManagers.Users;
 
 public class UserQueryManager(DatabaseContext context) : IUserQueryManager
 {
-    public async Task<List<UserEntity>> GetUserListAsync(
+    public List<UserEntity> GetUserList(
         Expression<Func<UserEntity, bool>>? predicate = null,
         bool includeTracking = false, 
         bool includeGroups = false,
@@ -21,13 +21,13 @@ public class UserQueryManager(DatabaseContext context) : IUserQueryManager
 
         if (predicate != null)
         {
-            return await userContext.Where(predicate).ToListAsync();
+            return userContext.Where(predicate).ToList();
         }
 
-        return await userContext.ToListAsync();
+        return userContext.ToList();
     }
     
-    public async Task<UserEntity?> GetUserSingleAsync(
+    public UserEntity? GetUserSingle(
         Expression<Func<UserEntity, bool>>? predicate = null,
         bool includeTracking = false, 
         bool includeGroups = false,
@@ -41,9 +41,9 @@ public class UserQueryManager(DatabaseContext context) : IUserQueryManager
 
         if (predicate != null)
         {
-            return await userContext.FirstOrDefaultAsync(predicate);
+            return userContext.FirstOrDefault(predicate);
         }
 
-        return await userContext.FirstOrDefaultAsync();
+        return userContext.FirstOrDefault();
     }
 }

@@ -1,3 +1,5 @@
+using LifeTracker.Application.Services.Entities.Expense;
+using LifeTracker.Application.Services.Entities.Expense.Interfaces;
 using LifeTracker.Application.Services.Entities.GroupService;
 using LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 using LifeTracker.Application.Services.Entities.UserService;
@@ -11,6 +13,7 @@ public static class CommandServicesConfigurator
 {
     public static void BindCommandServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddTransient<IExpenseCommandService, ExpenseCommandService>();
         builder.Services.AddTransient<IUserCommandService, UserCommandService>();
         builder.Services.AddTransient<IGroupCommandService, GroupCommandService>();
     }
