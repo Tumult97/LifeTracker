@@ -1,4 +1,5 @@
 using dotnet_helpers.Models;
+using LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 using LifeTracker.Domain.Models.API;
 using LifeTracker.Domain.Models.DTOs;
 using LifeTracker.Domain.Models.Infrastructure.Entities;

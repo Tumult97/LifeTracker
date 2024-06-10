@@ -1,13 +1,14 @@
 using dotnet_helpers.Extensions;
 using LifeTracker.API.Controllers.Base;
 using LifeTracker.Application.Services.Entities.GroupService;
+using LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 using LifeTracker.Domain.Models.API;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace LifeTracker.API.Controllers.Groups;
 
-[Route("api/Group")]
+[Route("api/Groups")]
 public class GroupCommandController(IGroupCommandService groupCommandService) : BaseController
 {
     [HttpPost]

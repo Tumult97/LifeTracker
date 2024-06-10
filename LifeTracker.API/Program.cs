@@ -2,6 +2,7 @@ using System.Text;
 using LifeTracker.Application.Config;
 using LifeTracker.Infrastructure.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -69,6 +70,8 @@ public static class Program
                .ConfigureContexts()
                .ConfigureQueryManagers()
                .ConfigureCommandManagers();
+        
+        builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         var app = builder.Build();
 
