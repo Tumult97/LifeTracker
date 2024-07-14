@@ -1,5 +1,4 @@
 using LifeTracker.Infrastructure.DataManagers.Expenses;
-using LifeTracker.Infrastructure.DataManagers.Groups;
 using LifeTracker.Infrastructure.DataManagers.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +10,6 @@ public static class QueryManagerConfigurator
     public static WebApplicationBuilder ConfigureQueryManagers(this WebApplicationBuilder builder)
     {
         builder.Services.AddTransient<IExpenseQueryManager, ExpenseQueryManager>();
-        builder.Services.AddTransient<IGroupQueryManager, GroupQueryManager>();
         builder.Services.AddTransient<IUserQueryManager, UserQueryManager>();
 
         return builder;

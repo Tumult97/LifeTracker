@@ -1,7 +1,5 @@
 using LifeTracker.Application.Services.Entities.Expense;
 using LifeTracker.Application.Services.Entities.Expense.Interfaces;
-using LifeTracker.Application.Services.Entities.GroupService;
-using LifeTracker.Application.Services.Entities.GroupService.Interfaces;
 using LifeTracker.Application.Services.Entities.UserService;
 using LifeTracker.Application.Services.Entities.UserService.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +13,5 @@ public static class CommandServicesConfigurator
     {
         builder.Services.AddTransient<IExpenseCommandService, ExpenseCommandService>();
         builder.Services.AddTransient<IUserCommandService, UserCommandService>();
-        builder.Services.AddTransient<IGroupCommandService, GroupCommandService>();
     }
 }
