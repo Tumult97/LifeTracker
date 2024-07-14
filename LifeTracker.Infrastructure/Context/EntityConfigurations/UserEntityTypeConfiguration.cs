@@ -18,8 +18,5 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<UserEntity>
         builder.Property(x => x.LastName).HasMaxLength(200);
         builder.Property(x => x.PasswordSalt).IsRequired().HasMaxLength(2000);
         builder.Property(x => x.PasswordHash).IsRequired().HasMaxLength(2000);
-        builder.HasMany(x => x.Groups)
-               .WithMany(x => x.Users)
-               .UsingEntity<UserGroupEntity>();
     }
 }

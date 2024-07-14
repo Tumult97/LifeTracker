@@ -12,13 +12,13 @@ public class UserDto()
     public string? Username { get; set; }
     public List<GroupDto>? Groups { get; set; }
     
-    public UserDto(UserEntity userEntity, bool populateGroups = false) : this()
+    public UserDto(UserEntity userEntity, List<GroupEntity>? groups = null) : this()
     {
         Id = userEntity.Id;
         FirstName = userEntity.FirstName;
         LastName = userEntity.LastName;
         Email = userEntity.Email;
         Username = userEntity.Username;
-        Groups = populateGroups ? userEntity.Groups?.Select(group => new GroupDto(group)).ToList() ?? null : null;
+        Groups = groups?.Select(group => new GroupDto(group)).ToList();
     }
 }

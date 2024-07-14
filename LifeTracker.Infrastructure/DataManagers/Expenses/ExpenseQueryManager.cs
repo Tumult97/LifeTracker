@@ -7,11 +7,9 @@ namespace LifeTracker.Infrastructure.DataManagers.Expenses;
 
 public class ExpenseQueryManager(DatabaseContext context) : IExpenseQueryManager
 {
-    public List<ExpenseEntity> GetExpenseList(Expression<Func<ExpenseEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUser = false)
+    public List<ExpenseEntity> GetExpenseList(Expression<Func<ExpenseEntity, bool>>? predicate = null, bool includeTracking = false)
     {
         var expenseContext = (includeTracking ? context.Expenses : context.Expenses.AsNoTracking()).IgnoreAutoIncludes();
-        
-        expenseContext = includeUser ? expenseContext.Include(x => x.User) : expenseContext;
         
         if (predicate != null)
         {
@@ -21,11 +19,9 @@ public class ExpenseQueryManager(DatabaseContext context) : IExpenseQueryManager
         return expenseContext.ToList();
     }
 
-    public ExpenseEntity? GetExpenseSingle(Expression<Func<ExpenseEntity, bool>>? predicate = null, bool includeTracking = false, bool includeUser = false)
+    public ExpenseEntity? GetExpenseSingle(Expression<Func<ExpenseEntity, bool>>? predicate = null, bool includeTracking = false)
     {
         var expenseContext = (includeTracking ? context.Expenses : context.Expenses.AsNoTracking()).IgnoreAutoIncludes();
-        
-        expenseContext = includeUser ? expenseContext.Include(x => x.User) : expenseContext;
         
         if (predicate != null)
         {

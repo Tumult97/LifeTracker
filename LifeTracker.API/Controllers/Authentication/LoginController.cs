@@ -18,9 +18,9 @@ public class LoginController(IConfiguration config, IUserQueryService userQueryS
         Description = "Login to the application.",
         OperationId = "Login",
         Tags = ["Authentication"])]
-    public async Task<IActionResult> Login([FromQuery] LoginRequestModel loginRequestModel)
+    public IActionResult Login([FromQuery] LoginRequestModel loginRequestModel)
     {
-        var serviceResult = await userQueryService.Login(loginRequestModel);
+        var serviceResult = userQueryService.Login(loginRequestModel);
 
         return serviceResult.ToActionResult();
     }

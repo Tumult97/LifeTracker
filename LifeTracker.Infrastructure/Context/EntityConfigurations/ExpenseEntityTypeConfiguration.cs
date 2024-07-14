@@ -23,19 +23,11 @@ public class ExpenseEntityTypeConfiguration
         builder.Property(e => e.Date)
             .IsRequired();
 
-        builder.Property(e => e.UserId)
-            .IsRequired();
-
         builder.Property(e => e.Category)
             .IsRequired();
 
         builder.Property(e => e.Store)
             .IsRequired()
             .HasMaxLength(100);
-
-        builder.HasOne(e => e.User)
-            .WithMany(u => u.Expenses)
-            .HasForeignKey(e => e.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

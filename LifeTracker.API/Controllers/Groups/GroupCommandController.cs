@@ -17,9 +17,9 @@ public class GroupCommandController(IGroupCommandService groupCommandService) : 
         Description = "",
         OperationId = "CreateGroup",
         Tags = ["Groups"])]
-    public async Task<IActionResult> CreateGroup([FromBody] GroupCreationRequest groupCreationRequest)
+    public IActionResult CreateGroup([FromBody] GroupCreationRequest groupCreationRequest)
     {
-        var result = await groupCommandService.CreateGroup(groupCreationRequest);
+        var result = groupCommandService.CreateGroup(groupCreationRequest);
         return Ok(result.Data);
     }
 }

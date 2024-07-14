@@ -16,8 +16,6 @@ public class GroupEntityTypeConfiguration
         builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Description).HasMaxLength(2000);
         builder.Property(x => x.Address);
-        builder.HasMany(x => x.Users)
-               .WithMany(x => x.Groups)
-               .UsingEntity<UserGroupEntity>();
+        builder.HasMany(x => x.Users);
     }
 }

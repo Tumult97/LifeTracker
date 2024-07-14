@@ -5,6 +5,6 @@ namespace LifeTracker.Infrastructure.DataManagers.Users;
 
 public interface IUserQueryManager
 {
-    List<UserEntity> GetUserList(Expression<Func<UserEntity, bool>>? predicate = null, bool includeTracking = false, bool includeGroups = false, bool includeExpenses = false);
-    UserEntity? GetUserSingle(Expression<Func<UserEntity, bool>>? predicate = null, bool includeTracking = false, bool includeGroups = false, bool includeExpenses = false);
+    List<UserEntity> GetUserList(Expression<Func<UserEntity, bool>>? predicate = null, bool includeTracking = false);
+    UserEntity? GetUserSingle(Expression<Func<UserEntity, bool>>? predicate = null, bool includeTracking = false);
 }

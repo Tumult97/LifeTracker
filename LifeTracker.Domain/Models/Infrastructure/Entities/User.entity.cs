@@ -11,7 +11,4 @@ public class UserEntity(string firstName, string lastName, string email, string 
     public string PasswordSalt { get; set; } = passwordSalt;
     public DateTime DateJoined { get; set; } = DateTime.UtcNow;
     public DateTime DateModified { get; set; } = DateTime.UtcNow;
-    
-    public List<GroupEntity>? Groups { get; set; }
-    public List<ExpenseEntity>? Expenses { get; set; }
 }

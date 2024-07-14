@@ -18,9 +18,7 @@ public class GroupCommandService(IGroupCommandManager groupCommandManager, IUser
         
         if (groupCreationRequest.UserIds != null)
         {
-            IReadOnlyList<UserEntity> users = userQueryManager.GetUserList(
-                includeTracking: true, 
-                predicate: user => groupCreationRequest.UserIds.Contains(user.Id));
+            IReadOnlyList<UserEntity> users = userQueryManager.GetUserList(predicate: user => groupCreationRequest.UserIds.Contains(user.Id), includeTracking: true);
 
             group.Users = users.ToList();
         }

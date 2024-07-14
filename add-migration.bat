@@ -1,4 +1,4 @@
-echo off
+@echo off
 set MIGRATION_NAME=%1
 if "%MIGRATION_NAME%"=="" (
     echo Usage: add-migration.bat ^<migration_name^>

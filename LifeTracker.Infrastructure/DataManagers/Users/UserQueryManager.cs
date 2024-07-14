@@ -7,17 +7,10 @@ namespace LifeTracker.Infrastructure.DataManagers.Users;
 
 public class UserQueryManager(DatabaseContext context) : IUserQueryManager
 {
-    public List<UserEntity> GetUserList(
-        Expression<Func<UserEntity, bool>>? predicate = null,
-        bool includeTracking = false, 
-        bool includeGroups = false,
-        bool includeExpenses = false)
+    public List<UserEntity> GetUserList(Expression<Func<UserEntity, bool>>? predicate = null,
+                                        bool includeTracking = false)
     {
         var userContext = (includeTracking ? context.Users : context.Users.AsNoTracking()).IgnoreAutoIncludes();
-        
-        userContext = includeGroups ? userContext.Include(x => x.Groups) : userContext;
-
-        userContext = includeExpenses ? userContext.Include(x => x.Expenses) : userContext;
 
         if (predicate != null)
         {
@@ -27,17 +20,10 @@ public class UserQueryManager(DatabaseContext context) : IUserQueryManager
         return userContext.ToList();
     }
     
-    public UserEntity? GetUserSingle(
-        Expression<Func<UserEntity, bool>>? predicate = null,
-        bool includeTracking = false, 
-        bool includeGroups = false,
-        bool includeExpenses = false)
+    public UserEntity? GetUserSingle(Expression<Func<UserEntity, bool>>? predicate = null,
+                                     bool includeTracking = false)
     {
         var userContext = (includeTracking ? context.Users : context.Users.AsNoTracking()).IgnoreAutoIncludes();
-        
-        userContext = includeGroups ? userContext.Include(x => x.Groups) : userContext;
-
-        userContext = includeExpenses ? userContext.Include(x => x.Expenses) : userContext;
 
         if (predicate != null)
         {

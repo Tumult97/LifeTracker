@@ -10,7 +10,4 @@ public class AuditModelBase
     public int? CreatedByUserId { get; set; }
     public DateTime DateModified { get; set; } = DateTime.UtcNow;
     public int? ModifiedbyUserId  { get; set; }
-    
-    public UserEntity? CreatedByUser { get; set; }
-    public UserEntity? ModifiedByUser { get; set; }
 }

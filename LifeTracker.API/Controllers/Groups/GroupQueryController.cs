@@ -16,9 +16,9 @@ public class GroupQueryController(IGroupQueryService groupQueryService) : BaseCo
         Description = "Gets the groups linked to the current active user using the HttpContext.",
         OperationId = "GetGroupsForCurrentUser",
         Tags = ["Groups"])]
-    public async Task<IActionResult> GetGroupsForCurrentUser()
+    public IActionResult GetGroupsForCurrentUser()
     {
-        var result = await groupQueryService.GetGroupsForCurrentUser();
+        var result = groupQueryService.GetGroupsForCurrentUser();
         return result.ToActionResult();
     }
 }
