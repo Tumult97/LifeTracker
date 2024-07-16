@@ -4,3 +4,4 @@ LifeTracker.Application/obj
 LifeTracker.API/obj
 LifeTracker.Domain/obj
 LifeTracker.Infrastructure/obj
+LifeTracker.Tests/obj
