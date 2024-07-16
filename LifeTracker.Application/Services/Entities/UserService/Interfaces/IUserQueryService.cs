@@ -7,4 +7,5 @@ namespace LifeTracker.Application.Services.Entities.UserService.Interfaces;
 public interface IUserQueryService
 {
     ServiceResult<string?> Login(LoginRequestModel loginRequestModel);
+    ServiceResult<UserDto> GetUserDtoByEmail(string email);
 }

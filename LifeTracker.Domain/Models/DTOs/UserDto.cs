@@ -3,20 +3,11 @@ using LifeTracker.Domain.Models.Infrastructure.Entities;
 
 namespace LifeTracker.Domain.Models.DTOs;
 
-public class UserDto()
+public class UserDto(UserEntity userEntity)
 {
-    public int Id { get; init; }
-    public string? FirstName { get; set; } = null;
-    public string? LastName { get; set; }
-    public string? Email { get; set; }
-    public string? Username { get; set; }
-    
-    public UserDto(UserEntity userEntity) : this()
-    {
-        Id = userEntity.Id;
-        FirstName = userEntity.FirstName;
-        LastName = userEntity.LastName;
-        Email = userEntity.Email;
-        Username = userEntity.Username;
-    }
+    public int Id { get; init; } = userEntity.Id;
+    public string? FirstName { get; set; } = userEntity.FirstName;
+    public string? LastName { get; set; } = userEntity.LastName;
+    public string? Email { get; set; } = userEntity.Email;
+    public string? Username { get; set; } = userEntity.Username;
 }
