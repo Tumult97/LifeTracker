@@ -5,3 +5,9 @@ LifeTracker.API/obj
 LifeTracker.Domain/obj
 LifeTracker.Infrastructure/obj
 LifeTracker.Tests/obj
+LifeTracker/API/bin
+LifeTracker/API/obj
+LifeTracker/Config/bin
+LifeTracker/Config/obj
+LifeTracker/Shared/bin
+LifeTracker/Shared/obj
